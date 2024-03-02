@@ -1,0 +1,98 @@
+html {
+  height: 100%;
+  width: 100%;
+  margin: 20px;
+}
+.container {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.station-card {
+  padding: 20px;
+  height: 80px;
+  width: 200px;
+  background-color: lightgray;
+  border: 2px black soild;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.line-selection {
+  margin: 20px;
+}
+
+.section-info {
+  font-size: 18px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: white;
+  border: solid 2px #454545;
+  border-radius: 16px;
+  padding: 8px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  margin: 5px;
+}
+
+.btn-ktl {
+  color: #7ed957;
+}
+
+.btn-isl {
+  color: #004aad;
+}
+
+.btn-twl {
+  color: #ff3131;
+}
+
+.btn-sil {
+  color: #cbcd09;
+}
+
+.btn-tcl {
+  color: #f6943d;
+}
+
+.btn-eal {
+  color: #5ce1e6;
+}
+
+.btn-tml {
+  color: #8d6019;
+}
+
+.btn-ael {
+  color: #3d9ea0;
+}
+
+.btn-tkl {
+  color: #8d45ab;
+}
+
+.last-update {
+  /* border: 2px solid red; */
+  margin: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.station-info {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.lightblue {
+  background-color: #9bedff;
+}
+
+.black-text {
+  color: black;
+}
