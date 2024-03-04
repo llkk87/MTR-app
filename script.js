@@ -363,3 +363,5 @@ btnEal.addEventListener("click", function () {
   clearContainer();
   myFn("EAL");
 });
+
+//changed
