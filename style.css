@@ -1,23 +1,32 @@
 html {
+  margin: 20px;
   height: 100%;
   width: 100%;
-  margin: 20px;
 }
 .container {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 10px auto;
+  /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+  width: 470px;
 }
 
 .station-card {
   padding: 20px;
   height: 80px;
-  width: 200px;
+  width: 180px;
   background-color: lightgray;
   border: 2px black soild;
   border-radius: 6px;
   margin-bottom: 10px;
+}
+
+.left-column {
+  float: left;
+}
+
+.right-column {
+  float: right;
 }
 
 .line-selection {
@@ -39,6 +48,7 @@ button {
   outline: none;
   box-shadow: none;
   margin: 5px;
+  font-size: 16px;
 }
 
 .btn-ktl {
@@ -86,7 +96,7 @@ button {
 
 .station-info {
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .lightblue {
@@ -95,4 +105,35 @@ button {
 
 .black-text {
   color: black;
+}
+
+@media only screen and (max-width: 480px) {
+  html {
+    margin: 10px;
+  }
+
+  .container {
+    width: 360px;
+  }
+
+  .station-card {
+    width: 135px;
+  }
+}
+
+/* for smartwatch and very old phone and galaxy fold */
+@media only screen and (max-width: 300px) {
+  html {
+    margin: 10px;
+  }
+
+  .left-column,
+  .right-column {
+    float: clear;
+    width: 100%;
+  }
+  .container {
+    width: 150px;
+    margin: 5px auto;
+  }
 }

@@ -181,6 +181,8 @@ let btnSil = document.querySelector(".btn-sil");
 let btnEal = document.querySelector(".btn-eal");
 let lastUpdate = document.querySelector(".last-update");
 let container = document.querySelector(".container");
+let left = document.querySelector(".left-column");
+let right = document.querySelector(".right-column");
 let button = document.querySelectorAll("button");
 let url, response, data, code;
 
@@ -190,16 +192,30 @@ function buttonActive(className) {
 }
 
 function clearContainer() {
-  let container = document.querySelector(".container");
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
+  let leftColumn = document.querySelector(".left-column");
+  let rightColumn = document.querySelector(".right-column");
+  while (leftColumn.firstChild) {
+    leftColumn.removeChild(leftColumn.firstChild);
+  }
+  while (rightColumn.firstChild) {
+    rightColumn.removeChild(rightColumn.firstChild);
   }
 }
 
-function createStationCards(direction, nameData, nextTrainData, platformData) {
+function createStationCards(
+  direction,
+  nameData,
+  nextTrainData,
+  platformData,
+  leftOrRight
+) {
   let stationCard = document.createElement("div");
-  stationCard.setAttribute("class", "station-card");
-  container.appendChild(stationCard);
+  stationCard.setAttribute("class", `station-card station-card-${leftOrRight}`);
+  if (leftOrRight === "left") {
+    left.appendChild(stationCard);
+  } else if (leftOrRight === "right") {
+    right.appendChild(stationCard);
+  }
 
   let stationName = document.createElement("div");
   stationName.setAttribute("class", "station-info station-name");
@@ -238,14 +254,17 @@ function myFn(lineName) {
           data.data[`${lineName}-${line[lineName].sta[i].code}`]["UP"][0] &&
           data.data[`${lineName}-${line[lineName].sta[i].code}`]["UP"][0].time
         ) {
-          nextTrainData = data.data[`${lineName}-${line[lineName].sta[i].code}`]["UP"][0].time;
+          nextTrainData =
+            data.data[`${lineName}-${line[lineName].sta[i].code}`]["UP"][0]
+              .time;
         } else {
           continue;
         }
 
-        platformData = data.data[`${lineName}-${line[lineName].sta[i].code}`]["UP"][0].plat;
+        platformData =
+          data.data[`${lineName}-${line[lineName].sta[i].code}`]["UP"][0].plat;
 
-        createStationCards("UP", nameData, nextTrainData, platformData);
+        createStationCards("UP", nameData, nextTrainData, platformData, "left");
       }
 
       for (let j = line[lineName].sta.length - 1; j >= 1; j--) {
@@ -264,14 +283,24 @@ function myFn(lineName) {
           data.data[`${lineName}-${line[lineName].sta[j].code}`]["DOWN"][0] &&
           data.data[`${lineName}-${line[lineName].sta[j].code}`]["DOWN"][0].time
         ) {
-          nextTrainData = data.data[`${lineName}-${line[lineName].sta[j].code}`]["DOWN"][0].time;
+          nextTrainData =
+            data.data[`${lineName}-${line[lineName].sta[j].code}`]["DOWN"][0]
+              .time;
         } else {
           continue;
         }
 
-        platformData = data.data[`${lineName}-${line[lineName].sta[j].code}`]["DOWN"][0].plat;
+        platformData =
+          data.data[`${lineName}-${line[lineName].sta[j].code}`]["DOWN"][0]
+            .plat;
 
-        createStationCards("DOWN", nameData, nextTrainData, platformData);
+        createStationCards(
+          "DOWN",
+          nameData,
+          nextTrainData,
+          platformData,
+          "right"
+        );
       }
     } catch (error) {
       console.error("error:", error);
